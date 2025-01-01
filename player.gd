@@ -2,8 +2,6 @@ extends CharacterBody3D
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= 9.81 * delta
-	#get_input(delta)
-	
 	
 	var max_velocity2D: float = 4
 	if !is_on_floor() || Input.is_action_pressed("ui_accept"):
