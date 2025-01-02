@@ -6,6 +6,11 @@ var remaining_jumps: int = max_jumps
 var jump_action_released: bool = true
 var jump_strength: float = 4
 
+var mass: float = 50
+var ground_friction: float = 700
+var max_speed: float = 10
+var movement_acceleration = max_speed * (ground_friction / mass)
+
 func can_jump() -> bool:
 	return jump_action_released && remaining_jumps > 0
 
@@ -27,12 +32,12 @@ func _physics_process(delta: float) -> void:
 			velocity.y += jump_strength
 	
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var movement_direction = input_vector.normalized()
 	
-	var velocity2D = max_velocity2D * movement_direction
-
-	velocity.x = velocity2D.x
-	velocity.z = velocity2D.y
+	var velocity2D = Vector2(velocity.x, velocity.z)
+	var acceleration2D = movement_acceleration * input_vector - (ground_friction / mass) * velocity2D
+	
+	velocity.x += acceleration2D.x * delta
+	velocity.z += acceleration2D.y * delta
 	
 	move_and_slide()
 		
