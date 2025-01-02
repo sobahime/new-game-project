@@ -1,5 +1,4 @@
 extends AnimatableBody3D
 
-
 func _physics_process(delta: float) -> void:
-	position.x += 10 * delta
+	position.x += 8 * delta

@@ -40,4 +40,3 @@ func _physics_process(delta: float) -> void:
 	velocity.z += acceleration2D.y * delta
 	
 	move_and_slide()
-		

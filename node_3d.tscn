@@ -19,6 +19,8 @@ material = SubResource("StandardMaterial3D_lamam")
 points = PackedVector3Array(-0.368816, -0.106754, -2.09165, -0.350105, -0.543911, -1.98436, -1.06237, -0.106754, -1.8394, -0.34761, -0.000136971, -1.96962, 0.3684, -0.106754, -2.09165, 0.349689, -0.543911, -1.98436, -0.120166, -1.26968, -0.680154, -0.345531, -1.26968, -0.598257, -1.00749, -0.543911, -1.74481, -1.54346, -0.543911, -1.2952, -1.62703, -0.106754, -1.36563, -1.53223, -0.000136971, -1.28578, -1, -0.000136971, -1.73212, 0.347194, -0.000136971, -1.96962, 1.06154, -0.106754, -1.8394, 1.00707, -0.543911, -1.74481, 0.345115, -1.26968, -0.598257, 0.119751, -1.26968, -0.680154, -0.000415564, -1.4, -0.000409365, -0.529315, -1.26968, -0.443881, -1.89314, -0.543911, -0.689162, -1.99585, -0.106754, -0.726425, -1.87942, -0.000136971, -0.684249, 0.999587, -0.000136971, -1.73212, 1.62662, -0.106754, -1.36563, 1.54304, -0.543911, -1.2952, 0.528484, -1.26968, -0.443881, -0.120166, -1.26968, 0.679744, -0.345531, -1.26968, 0.597848, -0.528899, -1.26968, 0.443472, -0.649066, -1.26968, 0.235863, -0.690646, -1.26968, 2.38419e-07, -0.649066, -1.26968, -0.236272, 0.648651, -1.26968, -0.236272, 0.690231, -1.26968, -0.000409365, 0.648651, -1.26968, 0.235863, 0.5289, -1.26968, 0.443472, 0.345115, -1.26968, 0.597848, 0.119751, -1.26968, 0.679744, -2.01497, -0.543911, 2.38419e-07, -2.00001, -0.000136971, -0.000409365, -2.12391, -0.106754, 2.38419e-07, 1.53181, -0.000136971, -1.28578, 1.87901, -0.000136971, -0.684249, 1.99543, -0.106754, -0.726425, 1.89273, -0.543911, -0.689162, -0.350105, -0.543911, 1.98395, -1.00749, -0.543911, 1.7444, -1.54346, -0.543911, 1.29479, -1.89314, -0.543911, 0.688753, 2.01456, -0.543911, -0.000409365, 1.89273, -0.543911, 0.688753, 1.54304, -0.543911, 1.29479, 0.349689, -0.543911, 1.98395, 1.00707, -0.543911, 1.7444, -1.99585, -0.106754, 0.726016, -1.87942, -0.000136971, 0.683839, 1.99959, -0.000136971, -0.000409365, 2.1235, -0.106754, -0.000409365, -0.368816, -0.106754, 2.09165, -1.06196, -0.106754, 1.839, -1.62703, -0.106754, 1.36522, 1.99543, -0.106754, 0.726016, 1.62662, -0.106754, 1.36522, 1.06196, -0.106754, 1.839, 0.3684, -0.106754, 2.09124, -1.53223, -0.000136971, 1.28537, 1.87901, -0.000136971, 0.683839, -0.34761, -0.000136971, 1.96921, -1, -0.000136971, 1.73171, 0.347194, -0.000136971, 1.96921, 1.53181, -0.000136971, 1.28537, 0.999587, -0.000136971, 1.73171)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4txwd"]
+height = 1.0
+radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frfpo"]
 emission_enabled = true
@@ -27,7 +29,9 @@ backlight = Color(1, 1, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_56esa"]
 material = SubResource("StandardMaterial3D_frfpo")
-height = 0.5
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
 radial_segments = 8
 rings = 0
 
@@ -49,22 +53,20 @@ sky = SubResource("Sky_f6ov4")
 [node name="Node3D" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03073, 1, 0)
 script = ExtResource("3_tvna3")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 3, 2.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_5ofvp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 1, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_w0nut")
 
 [node name="Plateforme 1" type="AnimatableBody3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 script = ExtResource("2_ak38y")
 
 [node name="palteforme_out" parent="Plateforme 1" instance=ExtResource("2_kp3bj")]
@@ -74,23 +76,40 @@ script = ExtResource("2_ak38y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plateforme 1"]
 shape = SubResource("ConvexPolygonShape3D_o3pp4")
 
+[node name="Plateforme 2" type="AnimatableBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, -20)
+script = ExtResource("2_ak38y")
+
+[node name="palteforme_out" parent="Plateforme 2" instance=ExtResource("2_kp3bj")]
+
+[node name="palteforme_in" parent="Plateforme 2" instance=ExtResource("1_f2o6o")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plateforme 2"]
+shape = SubResource("ConvexPolygonShape3D_o3pp4")
+
 [node name="Enemy 1" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84496, 0.737452, -3.93883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20)
 script = ExtResource("5_bmx3v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_4txwd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CylinderMesh_56esa")
 
 [node name="Shoot pause timer" type="Timer" parent="Enemy 1"]
 wait_time = 0.5
+one_shot = true
 
 [node name="Turn timer" type="Timer" parent="Enemy 1"]
+one_shot = true
 
 [node name="Turn pause timer" type="Timer" parent="Enemy 1"]
 wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hl6gs")
